@@ -1,4 +1,5 @@
 import "../Gallery.scss";
+import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
 import { Typography } from "@mui/material";
@@ -13,11 +14,6 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import TextField from '@mui/material/TextField';
 
-interface ImageItem {
-	image_URL: string,
-	file_name: string
-}
-
 export default function MasonryGallery(props: any) {
 	const [popupVisible, setPopupIsVisible] = useState(false);
 	const [emailIsValid, setEmailValidity] = useState(true);
@@ -28,7 +24,7 @@ export default function MasonryGallery(props: any) {
 	// data, we need somewhere to store the file that that they want to download
 	const [requestedFileToDownload, setRequestedFileToDownload] = useState('');
 
-	const [hoveredId, setHoveredId] = useState<String>("");
+	const [hoveredId, setHoveredId] = useState<string>("");
 	const setImageIsDownloading = props.setImageIsDownloading;
 	const imageItems = props.imageItems;
 	const imagesAreLoaded = props.imagesAreLoaded;
@@ -115,9 +111,26 @@ export default function MasonryGallery(props: any) {
 	  }
   
 	  function submitInput() {
-		name_input  = document.getElementById("nameInput").value;
-		email_input = document.getElementById("emailInput").value;
-  
+		if (document.getElementById("nameInput") == null) {
+			const nameElement = document.getElementById("nameInput");
+
+			if (nameElement instanceof HTMLInputElement) {
+				name_input = nameElement.value;
+			}
+		} else {
+			name_input = '';
+		}
+
+		if (document.getElementById("emailInput") == null) {
+			const emailElement = document.getElementById("nameInput");
+
+			if (emailElement instanceof HTMLInputElement) {
+				email_input = emailElement.value;
+			}
+		} else {
+			email_input = '';
+		}
+
 		const nameIsValid = (s: string) => {
 		  return (s != "")
 		};
@@ -212,8 +225,7 @@ export default function MasonryGallery(props: any) {
 			onMouseEnter={() => {setHoveredId(image.url)}}
 			onMouseLeave={() => {setHoveredId("")}}
 		  >
-			<img
-			  srcSet={`${image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+			<Image
 			  src={`${image.url}`}
 			  alt="image not loading"
 			  loading="lazy"

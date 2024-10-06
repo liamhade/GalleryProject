@@ -12,7 +12,7 @@ import MasonryGallery from "./components/MasonryGallery";
 export default function Gallery() {
   const [ imageIsDownloading, setImageIsDownloading ] = useState(false);
 
-  const [ allShowImages, setAllShowImages ] = useState({'': []});
+  const [ allShowImages, setAllShowImages ] = useState<{ [key: string]: any[] }>({'': []});
 	const [ imagesAreLoaded, setImagesAreLoaded ] = useState(false);
   const [ showName, setShowName ] = useState('');
 

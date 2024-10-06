@@ -32,9 +32,10 @@ export default function ResponsiveAppBar(props: any) {
 				<MenuList dense>
 					{props.showNames.map((show_name: string) => (
 						<MenuItem
+							key={ show_name }
 							onClick={ () => {props.setShowName(show_name)} }
 						>
-							<ListItemText key={ show_name }>  
+							<ListItemText>  
 								<Typography className="galleriesDropdownItem">
 									{ show_name }
 								</Typography> 
