@@ -1,0 +1,144 @@
+@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 100; }
+}
+
+
+.download-icon {
+	font-size: 25px;
+	color: gray;
+	animation: fadeIn 1.2s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+.galleriesDropdownItem {
+	color: gray;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.lg-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background: white;
+	// background: url("../../../public/backrepatcuo.png");
+	// justify-content: center;
+
+	.app-bar {
+		// position: absolute;
+		background-color: white;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 15vh;
+		width: 100vw;
+
+		.menu-box {
+			display: flex;
+			align-items: center;
+			width: 100vw;
+
+			.header-button {
+				margin-top: 2;
+				margin-bottom: 2;
+				margin-right: 2vw;
+
+				font-family: Verdana, Geneva, Tahoma, sans-serif;
+				color: gray; 
+				display: block;
+			}
+	
+			#comedyuo-logo {
+				width: 12vh;
+				height: 12vh;
+				margin-right: 7vh;
+			}
+		}
+	}
+
+	.gallery-and-footer {
+
+		.gallery-title-box {
+			margin-top: 35vh;
+			margin-bottom: 12vh;
+
+			.gallery-title {
+				display: flex;
+				align-content: center;
+				justify-content: center;
+				font-size: 30px;
+				color: rgb(106, 106, 106);
+				font-family: Verdana, Geneva, Tahoma, sans-serif
+			}
+		}
+
+		.image-list {
+			width: 90vw;
+			margin-left: 10vh;
+			margin-right: 10vh;
+			overflow-y: 'scroll';
+
+			.MuiImageListItem-root {
+				overflow: 'hidden';
+
+				.MuiImageListItemBar-root {
+					animation: fadeIn 0.4s;
+				}
+			}
+		}
+
+		.footer-container {
+			display: flex;
+			background: white;
+			flex-direction: column;
+			justify-content: center;
+			height: 12vh;
+
+			.footer-content {
+				display: flex;
+				justify-content: center;
+				font-family: Verdana, Geneva, Tahoma, sans-serif;
+				color: gray;
+				font-size: 12px;
+			}
+		}
+	}
+}
+
+#inputPopup {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 100vw;
+	height: 100vh;
+	backdrop-filter: blur(2px);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	#inputTitle {
+		font-size: 15px;
+		margin-bottom: 1vh;
+	}
+
+	.MuiPaper-root {
+		outline: solid rgb(26, 39, 177) 1px;
+
+		.customer-inputs {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 3%;
+			gap: 3vh;
+	
+			.input-button-box {
+				display: flex;
+				flex-direction: column;
+				justify-content: right;
+			}
+		}
+	}
+}
