@@ -1,5 +1,4 @@
 import "../Gallery.scss";
-import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
 import { Typography } from "@mui/material";
@@ -111,23 +110,25 @@ export default function MasonryGallery(props: any) {
 	  }
   
 	  function submitInput() {
-		if (document.getElementById("nameInput") == null) {
+		if (document.getElementById("nameInput") != null) {
 			const nameElement = document.getElementById("nameInput");
 
 			if (nameElement instanceof HTMLInputElement) {
 				name_input = nameElement.value;
 			}
 		} else {
+			console.error("[ERROR] name input is 'null'");
 			name_input = '';
 		}
 
-		if (document.getElementById("emailInput") == null) {
-			const emailElement = document.getElementById("nameInput");
+		if (document.getElementById("emailInput") != null) {
+			const emailElement = document.getElementById("emailInput");
 
 			if (emailElement instanceof HTMLInputElement) {
 				email_input = emailElement.value;
 			}
 		} else {
+			console.error("[ERROR] email input is 'null'");
 			email_input = '';
 		}
 
@@ -225,7 +226,7 @@ export default function MasonryGallery(props: any) {
 			onMouseEnter={() => {setHoveredId(image.url)}}
 			onMouseLeave={() => {setHoveredId("")}}
 		  >
-			<Image
+			<img
 			  src={`${image.url}`}
 			  alt="image not loading"
 			  loading="lazy"
