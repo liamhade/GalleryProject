@@ -2,7 +2,7 @@ class GalleryService {
 	static instance: GalleryService
 
 	async fetchImage(show_name: string, file_name: string) {
-		const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}gallery/fetchImage/`, {
+		const res = await fetch(`${process.env.NEXT_PUBLIC_HEROKU_BASE_URL}gallery/fetchImage/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application-json',
@@ -27,7 +27,7 @@ class GalleryService {
 		name?: string, 
 		email?: string
 	}) {
-		const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}gallery/handleUserInfo/`, {
+		const res = await fetch(`${process.env.NEXT_PUBLIC_HEROKU_BASE_URL}gallery/handleUserInfo/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ class GalleryService {
 
 	async listShowImages(show_name: string): Promise<any> {
 		
-		const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}gallery/${show_name}`);
+		const res = await fetch(`${process.env.NEXT_PUBLIC_HEROKU_BASE_URL}gallery/${show_name}`);
 
 		if (!res.ok) {
 			throw new Error(`Response status: ${res.status}`);
@@ -55,10 +55,7 @@ class GalleryService {
 	}
 
 	async getState(): Promise<any> {
-		console.log('getState');
-		console.log(`${process.env.NEXT_PUBLIC_API_BASE_URL}gallery/`);
-
-		const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}gallery/`);
+		const res = await fetch(`${process.env.NEXT_PUBLIC_HEROKU_BASE_URL}gallery/`);
 
 		if (!res.ok) {
 			throw new Error(`Response status: ${res.status}`);
