@@ -55,6 +55,9 @@ class GalleryService {
 	}
 
 	async getState(): Promise<any> {
+		console.log('getState');
+		console.log(process.env.NEXT_PUBLIC_HEROKU_BASE_URL);
+
 		const res = await fetch(`${process.env.NEXT_PUBLIC_HEROKU_BASE_URL}gallery/`);
 
 		if (!res.ok) {
