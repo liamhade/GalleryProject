@@ -49,11 +49,11 @@ export default function MasonryGallery(props: any) {
 		numImagesLoaded++;
 		console.log(`numImagesLoaded, ${numImagesLoaded}`);
 
-		if (index == (num_images-1)) {
+		if ((index+1) == numImagesLoaded) {
 			console.log(`checkLastImageMounted, ${index}, ${num_images}, true`);
-			setLastImageMounted(true);
-		};
-		console.log(`checkLastImageMounted, ${index}, ${num_images}, false`);
+		} else {
+			console.log(`checkLastImageMounted, ${index}, ${num_images}, false`);
+		}
 	}
 
 	const stringIsValidEmail = (str: string) => {
