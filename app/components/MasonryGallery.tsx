@@ -22,12 +22,7 @@ export default function MasonryGallery(props: any) {
 	// haven't put in their information yet. Thus, while they are submitting there
 	// data, we need somewhere to store the file that that they want to download
 	const [requestedFileToDownload, setRequestedFileToDownload] = useState('');
-	const [lastImageMounted, setLastImageMounted] = useState(false);
 	let numImagesLoaded = 0;
-
-	if (lastImageMounted) {
-		console.log('lastImageMounted');
-	}
 
 	const [hoveredId, setHoveredId] = useState<string>("");
 	const setImageIsDownloading = props.setImageIsDownloading;
