@@ -22,6 +22,7 @@ export default function MasonryGallery(props: any) {
 	// haven't put in their information yet. Thus, while they are submitting there
 	// data, we need somewhere to store the file that that they want to download
 	const [requestedFileToDownload, setRequestedFileToDownload] = useState('');
+	const [lastImageMounted, setLastImageMounted] = useState(false);
 
 	const [hoveredId, setHoveredId] = useState<string>("");
 	const setImageIsDownloading = props.setImageIsDownloading;
@@ -38,7 +39,15 @@ export default function MasonryGallery(props: any) {
 	const togglePopupVisibility = () => {
 	  setPopupIsVisible(!popupVisible);
 	};
-  
+	
+	const checkLastImageMounted = (num_images: number, index: number) => {
+		if (index == (num_images-1)) {
+			console.log(`checkLastImageMounted, ${index}, ${num_images}, true`);
+			setLastImageMounted(true);
+		};
+		console.log(`checkLastImageMounted, ${index}, ${num_images}, false`);
+	}
+
 	const stringIsValidEmail = (str: string) => {
 	  const email_regex = new RegExp("^[a-zA-Z0-9._%±]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
 	  return email_regex.test(str);
@@ -219,7 +228,7 @@ export default function MasonryGallery(props: any) {
   
 	return (
 	  <ImageList className="image-list" variant="masonry" cols={4} gap={12}>
-		{imagesAreLoaded && imageItems.map((image: any) => (
+		{imagesAreLoaded && imageItems.map((image: any, index: any) => (
 		  // Loads in each image from our list
 		  <ImageListItem 
 			key={image.url}
@@ -229,9 +238,9 @@ export default function MasonryGallery(props: any) {
 			<img
 			  src={`${image.url}`}
 			  alt="image not loading"
+			  onLoad={() => {checkLastImageMounted(imageItems.length, index)}}
 			  loading="lazy"
 			/>
-		
 			{hoveredId === image.url && (
 			  <ImageListItemBar
 				sx={{
@@ -256,7 +265,6 @@ export default function MasonryGallery(props: any) {
 				}
 			  />
 			)}
-			
 		  </ImageListItem>
 		))}
 	  {popupVisible && <DownloadPopup/>}

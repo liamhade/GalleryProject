@@ -29,6 +29,7 @@ export default function Gallery() {
         console.error("Error fetching gallery state:", error);
       } finally {
         setImagesAreLoaded(true);
+        console.log('setImagesAreLoaded, true');
       }
       
     }
