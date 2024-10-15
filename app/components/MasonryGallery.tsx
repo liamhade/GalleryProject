@@ -23,6 +23,7 @@ export default function MasonryGallery(props: any) {
 	// data, we need somewhere to store the file that that they want to download
 	const [requestedFileToDownload, setRequestedFileToDownload] = useState('');
 	const [lastImageMounted, setLastImageMounted] = useState(false);
+	let numImagesLoaded = 0;
 
 	if (lastImageMounted) {
 		console.log('lastImageMounted');
@@ -45,6 +46,9 @@ export default function MasonryGallery(props: any) {
 	};
 	
 	const checkLastImageMounted = (num_images: number, index: number) => {
+		numImagesLoaded++;
+		console.log(`numImagesLoaded, ${numImagesLoaded}`);
+
 		if (index == (num_images-1)) {
 			console.log(`checkLastImageMounted, ${index}, ${num_images}, true`);
 			setLastImageMounted(true);
