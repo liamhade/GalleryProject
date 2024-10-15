@@ -24,6 +24,10 @@ export default function MasonryGallery(props: any) {
 	const [requestedFileToDownload, setRequestedFileToDownload] = useState('');
 	const [lastImageMounted, setLastImageMounted] = useState(false);
 
+	if (lastImageMounted) {
+		console.log('lastImageMounted');
+	}
+
 	const [hoveredId, setHoveredId] = useState<string>("");
 	const setImageIsDownloading = props.setImageIsDownloading;
 	const imageItems = props.imageItems;
